@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 1160017827429445587}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -2, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1158863484740773353}
   - {fileID: 1156100126392658935}
@@ -173,6 +173,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 4905756295656812680}
+  walkSpeed: 5
+  jumpForce: 350
 --- !u!1 &1160026790238397451
 GameObject:
   m_ObjectHideFlags: 0
