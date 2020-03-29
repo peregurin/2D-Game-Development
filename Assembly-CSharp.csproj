@@ -92,6 +92,8 @@
     <Compile Include="Assets\2DGamekit\Utilities\DefaultPlayables\Video\VideoScriptPlayableTrack.cs" />
     <Compile Include="Assets\2DGamekit\Utilities\Standard Assets\Effects\ImageEffects\Scripts\BlurOptimized.cs" />
     <Compile Include="Assets\2DGamekit\Utilities\Standard Assets\Effects\ImageEffects\Scripts\PostEffectsBase.cs" />
+    <Compile Include="Assets\Scripts\LevelComplete.cs" />
+    <Compile Include="Assets\Scripts\PlayerController.cs" />
     <None Include="Assets\2DGamekit\Utilities\Shaders\NormalMappedSprite-Animated.shader" />
     <None Include="Assets\2DGamekit\Utilities\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\2DGamekit\Utilities\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
