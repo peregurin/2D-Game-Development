@@ -1,19 +1,32 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    #region Variables Initializations
+
     public Animator animator;
+    public ScoreController scoreController;
+    public GameOverController gameOverController;
     public float walkSpeed;
     public float jumpForce;
 
+    private bool isGrounded = false;
+    private int health = 3;
+
     private Rigidbody2D rb2D;
+
+    #endregion
+
+    #region Unity Callbacks
 
     private void Start()
     {
         rb2D = gameObject.GetComponent<Rigidbody2D>();
-    }
+    }  
 
     private void Update()
     {
@@ -23,6 +36,55 @@ public class PlayerController : MonoBehaviour
         verticalCharacterAnimation(jump);
         moveInHorizontalDirection(horizontal);
         moveInVerticalDirection(jump);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //Debug.Log("function called");
+        if (collision.gameObject.tag == "Platform")
+        {
+            isGrounded = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        //Debug.Log("function called");
+        if (collision.gameObject.tag == "Platform")
+        {
+            isGrounded = false;
+        }
+    }
+
+    #endregion
+
+    #region Custom Functions
+
+    public void PickUpKey()
+    {
+        Debug.Log("The player has picked up the key.");
+        scoreController.IncreaseScore(10);
+    }
+
+    public void KillPlayer()
+    {
+        Debug.Log("The player is dead");
+        gameOverController.PlayerDied();
+        this.enabled = false;
+        //ReloadLevel();
+    }
+
+    public void reduceHealth()
+    {
+        if (health > 0)
+        {
+            health--;
+            Debug.Log("Health remaining: " + health);
+        }
+        else
+        {
+            KillPlayer();
+        }
     }
 
     private void moveInHorizontalDirection(float horizontal)
@@ -36,7 +98,7 @@ public class PlayerController : MonoBehaviour
 
     private void moveInVerticalDirection(bool jump)
     {
-        if (jump)
+        if (jump && isGrounded)
         {
             rb2D.AddForce(new Vector2(0f, jumpForce));
         }
@@ -83,4 +145,5 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("Push", push);
     }
 
+    #endregion 
 }
