@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1158619698622952629}
   - component: {fileID: 1362780627032338625}
+  - component: {fileID: 4879398266410980464}
   - component: {fileID: 5684117026801313732}
   - component: {fileID: 4905756295656812680}
   - component: {fileID: 4287678323612470058}
-  - component: {fileID: 4879398266410980464}
   m_Layer: 13
   m_Name: Player
   m_TagString: Untagged
@@ -94,6 +94,22 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!70 &4879398266410980464
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160017827429445587}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.014330357, y: 0.9691911}
+  m_Size: {x: 0.48309404, y: 2.1147685}
+  m_Direction: 0
 --- !u!50 &5684117026801313732
 Rigidbody2D:
   serializedVersion: 4
@@ -147,24 +163,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 4905756295656812680}
+  scoreController: {fileID: 0}
   walkSpeed: 5
   jumpForce: 350
---- !u!70 &4879398266410980464
-CapsuleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1160017827429445587}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.014330357, y: 0.9691911}
-  m_Size: {x: 0.48309404, y: 2.1147685}
-  m_Direction: 0
 --- !u!1 &1160026790238397451
 GameObject:
   m_ObjectHideFlags: 0

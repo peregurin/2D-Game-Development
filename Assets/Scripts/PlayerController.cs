@@ -6,8 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
+    #region Variables Initializations
+
     public Animator animator;
     public ScoreController scoreController;
+    public GameOverController gameOverController;
     public float walkSpeed;
     public float jumpForce;
 
@@ -16,12 +19,14 @@ public class PlayerController : MonoBehaviour
 
     private Rigidbody2D rb2D;
 
+    #endregion
+
+    #region Unity Callbacks
+
     private void Start()
     {
         rb2D = gameObject.GetComponent<Rigidbody2D>();
-    }
-
-    
+    }  
 
     private void Update()
     {
@@ -33,6 +38,28 @@ public class PlayerController : MonoBehaviour
         moveInVerticalDirection(jump);
     }
 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        //Debug.Log("function called");
+        if (collision.gameObject.tag == "Platform")
+        {
+            isGrounded = true;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        //Debug.Log("function called");
+        if (collision.gameObject.tag == "Platform")
+        {
+            isGrounded = false;
+        }
+    }
+
+    #endregion
+
+    #region Custom Functions
+
     public void PickUpKey()
     {
         Debug.Log("The player has picked up the key.");
@@ -42,12 +69,9 @@ public class PlayerController : MonoBehaviour
     public void KillPlayer()
     {
         Debug.Log("The player is dead");
-        ReloadLevel();
-    }
-
-    private void ReloadLevel()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        gameOverController.PlayerDied();
+        this.enabled = false;
+        //ReloadLevel();
     }
 
     public void reduceHealth()
@@ -121,22 +145,5 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("Push", push);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        //Debug.Log("function called");
-        if (collision.gameObject.tag == "Platform")
-        {
-            isGrounded = true;
-        }
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        Debug.Log("function called");
-        if (collision.gameObject.tag == "Platform")
-        {
-            isGrounded = false;
-        }
-    }
-
+    #endregion 
 }
