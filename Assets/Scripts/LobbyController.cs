@@ -7,10 +7,16 @@ using UnityEngine.UI;
 public class LobbyController : MonoBehaviour
 {
     public Button buttonPlay;
+    public GameObject LevelSelection;
 
     private void Awake()
     {
-        buttonPlay.onClick.AddListener(loadFirstLevel);
+        buttonPlay.onClick.AddListener(loadPopUp);
+    }
+
+    public void loadPopUp()
+    {
+        LevelSelection.SetActive(true);
     }
 
     public void loadFirstLevel()
